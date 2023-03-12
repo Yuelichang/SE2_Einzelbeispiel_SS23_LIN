@@ -30,7 +30,7 @@
         android:layout_marginEnd="203dp"
         android:text="Gib deine Matrikelnummer ein
 "
-        app:layout_constraintBottom_toTopOf="@+id/editTextNumber"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,12 +41,12 @@
         android:id="@+id/answerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="145dp"
-        android:layout_marginTop="51dp"
-        android:layout_marginEnd="150dp"
+        android:layout_marginStart="143dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="144dp"
+        android:gravity="center"
         android:text="Antwort vom Server"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userInput"
         tools:ignore="UnknownId" />
@@ -85,6 +85,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="171dp"
         android:text="Aufgabe 2"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/answerView" />

@@ -3,12 +3,10 @@ package com.example.se2_einzelbeispiel_ss23_lin;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -44,13 +42,23 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        serverBtn.setOnClickListener(view -> changeMNr());
+        ex2Btn.setOnClickListener(view -> changeMNr());
+        serverBtn.setOnClickListener(view -> {
+            Thread thread = new Thread(createThread());
+            thread.start();
+            try {
+                thread.join();
+            } catch (InterruptedException ie) {
+            }
+            answerView.setText(answerText);
+            ex2View.setText("");
+        });
     }
 
     public Runnable createThread() {
-        Runnable runnable = () -> {
+        return () -> {
             try {
-                String userInput = answerView.getText().toString();
+                String userInput = mNr.getText().toString();
                 Socket clientSocket = new Socket("se2-isys.aau.at", 53212);
                 DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
                 BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -61,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         };
-        return runnable;
     }
 
     // Da a = 1... Annahme 0 = j
@@ -81,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         output = output.replace("[", "");
         output = output.replace("]", "");
 
-        answerView.setText(output);
+        ex2View.setText(output);
         //System.out.println(Arrays.toString(result));
 
     }
