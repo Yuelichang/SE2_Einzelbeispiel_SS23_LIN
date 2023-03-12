@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     String answerText;
-    String nullText = "Bitte geben Sie Ihre Matrikelnummer ein!";
 
 
     @Override
